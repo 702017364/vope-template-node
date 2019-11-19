@@ -9,3 +9,9 @@ export { default as P } from './P';
 export { default as develop } from './develop';
 
 export { default as plugins } from './plugins';
+
+export { default as server } from './server';
+
+export { default as watchs } from './watchs';
+
+export { default as root } from './root';

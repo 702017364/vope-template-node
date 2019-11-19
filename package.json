@@ -1,36 +1,51 @@
 {
   "name": "@vope/template-node",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "",
   "bin": {
     "template-node": "./bin/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "rollup": "rollup -c"
   },
   "author": "vope",
   "license": "ISC",
+  "files": [
+    "bin",
+    "lib",
+    "gulpfile.js"
+  ],
   "devDependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/node": "^7.7.0",
+    "@babel/plugin-external-helpers": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.7.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
     "@babel/plugin-proposal-partial-application": "^7.4.4",
     "@babel/plugin-proposal-pipeline-operator": "^7.5.0",
-    "@babel/preset-env": "^7.7.1",
-    "@babel/register": "^7.7.0",
+    "@babel/plugin-proposal-private-methods": "^7.6.0",
+    "@babel/register": "^7.7.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/runtime": "^7.7.4",
+    "browser-sync": "^2.26.7",
+    "cli-color": "^2.0.0",
     "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^4.2.0",
-    "gulp-if": "^3.0.0",
-    "gulp-notify": "^3.2.0",
-    "gulp-plumber": "^1.2.1",
-    "gulp-rollup": "^2.16.2",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
-    "gulp-uglify-es": "^2.0.0",
+    "gulp-watch": "^5.0.1",
+    "http-proxy-middleware": "^0.20.0",
+    "lodash": "^4.17.15",
     "minimist": "^1.2.0",
     "node-sass": "^4.13.0",
+    "rollup": "^1.27.5",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.2",
     "through2": "^3.0.1"
-  },
-  "dependencies": {}
+  }
 }

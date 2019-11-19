@@ -1,6 +1,3 @@
 node_modules
-/cdn
-/bin
-/dist
 .vscode
 .idea

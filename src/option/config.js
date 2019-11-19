@@ -1,42 +1,25 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
-import { transfer } from '../util';
-import T from './T';
-import __transfer from './transfer';
+import join from '../util/join';
+import formatRollup from './rollup';
 
 const option = {
+  env: false,
   entry: true,
-  babelrc: false,
+  base: "./",
+  runtime: true,
   output: [ 'index.scss' ],
-  rollup: false,
   cdn: [],
   merge: [],
-  babelcli: [],
-  flag: 'r',
-  target: null,
-};
-
-const formatRollup = (option) => {
-  let { rollup } = option;
-  rollup || (rollup = false);
-  rollup === 'rollup' && (rollup = {});
-  option.rollup = rollup;
-  if(rollup && typeof rollup == 'object'){
-    rollup.input = (rollup.input || 'index.js') |> transfer(?, T.src);
-    const output = rollup.output = rollup.output || {};
-    [].concat(output).forEach((item) => {
-      item.format = item.format || rollup.format || 'iife';
-    });
-    option.rollup = rollup;
-  }
-  return option;
+  rollup: null,
+  presets: [],
+  plugins: [],
+  browsersync: null,
+  rules: {},
 };
 
 export default (() => {
   try{
-    return join(__transfer, '.template')
-      |> readFileSync(?, { encoding: 'utf-8' })
-      |> JSON.parse
+    return join('template.js')
+      |> require
       |> Object.assign({}, option, ?)
       |> formatRollup;
   } catch{

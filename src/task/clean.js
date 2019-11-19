@@ -1,22 +1,12 @@
-import { statSync } from 'fs';
-import { join } from 'path';
-import gulp from 'gulp';
-import clean from 'gulp-clean';
-import { __transfer, T, develop } from '../option';
+import { rmdirSync, join } from '../util';
+import { T } from '../option';
 
 export default (cb) => {
-  const list = [];
-  const push = (folder) => {
-    const src = join(__transfer, folder);
+  const list = [T.dist];
+  list.forEach((value) => {
     try{
-      statSync(src);
-      list.push(src);
+      value = join(value) |> rmdirSync;
     } catch{}
-  };
-  develop && push(T.bin);
-  develop && push(T.cdn);
-  develop || push(T.dist);
-  return list.length
-    ? gulp.src(list, { allowEmpty: true }).pipe(clean())
-    : cb();
+  });
+  cb();
 };

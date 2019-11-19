@@ -1,6 +1,5 @@
 import { join } from 'path';
-
-const re = /\\+/g;
+import { sep } from './re';
 
 /**
  * @description: 将相对路径转换成绝对路径
@@ -18,7 +17,7 @@ const abs = (src, path) => {
     } else{
       value = join(path, src);
     }
-    return value.replace(re, '/');
+    return value.replace(sep, '/');
   } else if(src instanceof Array){
     return src.map((value) => abs(value, path));
   } else{

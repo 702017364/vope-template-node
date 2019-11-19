@@ -1,18 +1,37 @@
 import gulp from 'gulp';
 import sass from 'gulp-sass';
 import compiler from 'node-sass';
-import gif from 'gulp-if';
-import sourcemaps from 'gulp-sourcemaps';
 import clean from 'gulp-clean-css';
-import { dest } from '../util';
-import { T, P, develop } from '../option';
+import { Get } from '../util';
+import { P, __transfer } from '../option';
 
 sass.compiler = compiler;
 
+class Gett extends Get {
+  get src(){
+    return P.styles.output;
+  }
+
+  get clean(){
+    return this.develop
+      ? this.empty
+      : clean();
+  }
+
+  get sass(){
+    return sass({ 
+      outputStyle: 'expanded',
+      includePaths: __transfer,
+    }).on('errer', sass.logError);
+  }
+}
+
+const _ = new Gett();
+
 export default () => gulp
-  .src(P.styles.output, { allowEmpty: true })
-  .pipe(gif(develop, sourcemaps.init()))
-  .pipe(sass({ outputStyle: 'expanded' })).on('errer', sass.logError)
-  .pipe(gif(!develop, clean()))
-  .pipe(gif(develop, sourcemaps.write('./')))
-  .pipe(dest(T.bin) |> gulp.dest);
+  .src(_.src, _.allowEmpty)
+  .pipe(_.sourcemaps_init)
+  .pipe(_.sass)
+  .pipe(_.clean)
+  .pipe(_.sourcemaps_write)
+  .pipe(_.dest);

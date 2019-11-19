@@ -1,6 +1,4 @@
-import { join } from 'path';
 import abs from './abs';
-import __transfer from '../option/transfer';
+import join from './join';
 
-export default (value, key) => join(__transfer, key)
-  |> abs(value, ?);
+export default (value, key) => join(key) |> abs(value, ?);

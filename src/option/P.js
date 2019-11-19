@@ -1,4 +1,4 @@
-import { transfer } from '../util';
+import transfer from '../util/transfer';
 import T from './T';
 import config from './config';
 
