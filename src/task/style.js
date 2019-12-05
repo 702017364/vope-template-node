@@ -2,8 +2,9 @@ import gulp from 'gulp';
 import sass from 'gulp-sass';
 import compiler from 'node-sass';
 import clean from 'gulp-clean-css';
+import rename from 'gulp-rename';
 import { Get } from '../util';
-import { P, __transfer } from '../option';
+import { P, __transfer, config } from '../option';
 
 sass.compiler = compiler;
 
@@ -24,6 +25,13 @@ class Gett extends Get {
       includePaths: __transfer,
     }).on('errer', sass.logError);
   }
+
+  get rename(){
+    const name = config.rename;
+    return name && typeof name == 'string'
+      ? rename(`${name}.css`)
+      : this.empty;
+  }
 }
 
 const _ = new Gett();
@@ -33,5 +41,6 @@ export default () => gulp
   .pipe(_.sourcemaps_init)
   .pipe(_.sass)
   .pipe(_.clean)
+  .pipe(_.rename)
   .pipe(_.sourcemaps_write)
   .pipe(_.dest);
