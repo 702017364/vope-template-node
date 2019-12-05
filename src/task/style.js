@@ -28,9 +28,14 @@ class Gett extends Get {
 
   get rename(){
     const name = config.rename;
-    return name && typeof name == 'string'
-      ? rename(`${name}.css`)
-      : this.empty;
+    const type = typeof name;
+    if(type == 'string' && name){
+      return rename(`${name}.css`);
+    } else if(name == 'function'){
+      return rename;
+    } else{
+      return this.empty;
+    }
   }
 }
 
