@@ -18,7 +18,7 @@ const conver = (value) => {
 class Rollup {
   constructor(option){
     this.option = option;
-    this.rollup = option.rollup;
+    this.rollup = option.rollup ?? {};
     this.sourcemap = develop || option.sourcemap === true;
     this.init();
   }

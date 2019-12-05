@@ -9,7 +9,7 @@ const option = {
   output: [ 'index.scss' ],
   cdn: [],
   merge: [],
-  rollup: null,
+  rollup: {},
   presets: [],
   plugins: [],
   browsersync: null,
