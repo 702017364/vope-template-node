@@ -1,10 +1,11 @@
-import join from '../util/join';
+import merge from 'lodash/merge';
 import formatRollup from './rollup';
+import custom from './custom';
 
 const option = {
   env: false,
   entry: true,
-  base: "./",
+  base: './',
   runtime: true,
   output: [ 'index.scss' ],
   cdn: [],
@@ -16,14 +17,4 @@ const option = {
   rules: {},
 };
 
-export default (() => {
-  let value;
-  try{
-    value = join('template.js')
-      |> require
-      |> Object.assign({}, option, ?);
-  } catch{
-    value = Object.assign({}, option);
-  }
-  return formatRollup(value);
-})();
+export default merge(option, custom) |> formatRollup;
