@@ -41,7 +41,7 @@ class Rollup {
 
   formatRollup = (value) => {
     let { output, input } = merge({
-      input: 'index.' + (this.option.ts === true ? 'ts' : 'js'),
+      input: 'index.js',
       output: {
         format: defaultFormat
       },
