@@ -17,12 +17,13 @@ const option = {
 };
 
 export default (() => {
+  let value;
   try{
-    return join('template.js')
+    value = join('template.js')
       |> require
-      |> Object.assign({}, option, ?)
-      |> formatRollup;
+      |> Object.assign({}, option, ?);
   } catch{
-    return Object.assign({}, option);
+    value = Object.assign({}, option);
   }
+  return formatRollup(value);
 })();
