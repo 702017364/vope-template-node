@@ -7,6 +7,7 @@ const option = {
   entry: true,
   base: './',
   runtime: true,
+  rename: null,
   output: [ 'index.scss' ],
   cdn: [],
   merge: [],
