@@ -16,6 +16,7 @@ const option = {
   plugins: [],
   browsersync: null,
   rules: {},
+  uglify: true,
 };
 
 export default merge(option, custom) |> formatRollup;

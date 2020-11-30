@@ -20,7 +20,7 @@ plugins.push(
   json(),
 );
 
-develop || plugins.push(terser());
+!develop && config.uglify && plugins.push(terser());
 
 if(Array.isArray(rollupPlugins)){
   rollupPlugins.forEach((item, index) => item

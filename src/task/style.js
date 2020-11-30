@@ -14,7 +14,7 @@ class Gett extends Get {
   }
 
   get clean(){
-    return this.develop
+    return this.develop || !config.uglify
       ? this.empty
       : clean();
   }
